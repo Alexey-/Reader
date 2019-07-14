@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="space_regular">16dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+
+    <dimen name="text_size_heading_1">36dp</dimen>
+    <dimen name="text_size_heading_2">24dp</dimen>
+    <dimen name="text_size_regular">16dp</dimen>
+    <dimen name="text_size_description">12dp</dimen>
+
+</resources>

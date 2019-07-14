@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#304ffe</color>
+    <color name="primary_dark">#0026ca</color>
+    <color name="primary_light">#7a7cff</color>
+    <color name="primary_contrast">#ffffff</color>
+    <color name="secondary">#dd2c00</color>
+    <color name="secondary_dark">#a30000</color>
+    <color name="secondary_light">#ff6434</color>
+    <color name="secondary_contrast">#ffffff</color>
+
+    <color name="text_primary">@color/primary_contrast</color>
+    <color name="text_secondary">@color/secondary_contrast</color>
+    <color name="text_inverse">#000000</color>
+    <color name="text_unimportant">#888888</color>
+
+    <color name="error">@color/secondary_dark</color>
+
+</resources>

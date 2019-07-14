@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="screen_space_horizontal">@dimen/space_large</dimen>
+    <dimen name="screen_space_vertical">@dimen/space_large</dimen>
+
+    <dimen name="space_large">16dp</dimen>
+    <dimen name="space_regular">12dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+
+    <dimen name="text_size_heading_1">24dp</dimen>
+    <dimen name="text_size_heading_2">20dp</dimen>
+    <dimen name="text_size_regular">14dp</dimen>
+    <dimen name="text_size_description">12dp</dimen>
+
+    <dimen name="btn_normal_min_height">48dp</dimen>
+    <dimen name="btn_normal_inset_horizontal">0dp</dimen>
+    <dimen name="btn_normal_inset_vertical">0dp</dimen>
+    <dimen name="btn_normal_padding_horizontal">@dimen/space_regular</dimen>
+    <dimen name="btn_normal_padding_vertical">@dimen/space_small</dimen>
+
+</resources>
