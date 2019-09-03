@@ -38,8 +38,6 @@
 -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
 
 # Room
--dontwarn android.arch.util.paging.CountedDataSource
--dontwarn android.arch.persistence.room.paging.LimitOffsetDataSource
--keep class * implements android.arch.persistence.room.RoomDatabase {
+-keep class * implements androidx.room.RoomDatabase {
     <methods>;
 }

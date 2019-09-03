@@ -26,10 +26,42 @@ android {
         androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
 
+    signingConfigs {
+        key {
+            keyAlias "key"
+            keyPassword "123456"
+            storeFile file("../signing/key.keystore")
+            storePassword "123456"
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            applicationId 'com.example.reader'
+            buildConfigField 'String', 'HOST', '"https://api.example.com/"'
+            buildConfigField 'String', 'SERVER_BUILD_TYPE', '"prod"'
+        }
+        development {
+            applicationId 'com.example.reader.dev'
+            buildConfigField 'String', 'HOST', '"https://api.example.com/"'
+            buildConfigField 'String', 'SERVER_BUILD_TYPE', '"test"'
+        }
+        local {
+            applicationId 'com.example.reader.local'
+            buildConfigField 'String', 'HOST', '""'
+            buildConfigField 'String', 'SERVER_BUILD_TYPE', '"fake"'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
+            signingConfig signingConfigs.key
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.key
         }
     }
 
@@ -40,10 +72,14 @@ android {
 
 dependencies {
     implementation project(':base')
+    localImplementation project(':fake_server')
 
     implementation project(':article_model')
 
     implementation project(':article_ui')
+
+    kapt "androidx.annotation:annotation:$supportAnnotationVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"

@@ -4,7 +4,7 @@ import androidx.room.RoomDatabase
 
 import java.util.HashMap
 
-class RoomDatabaseWrapper(private val roomDatabase: RoomDatabase) : IDatabase {
+open class RoomDatabaseWrapper(private val roomDatabase: RoomDatabase) : IDatabase {
 
     private val daoByClass: HashMap<Class<*>, Any> = HashMap()
 

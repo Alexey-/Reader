@@ -55,9 +55,9 @@ object ServerErrorHandler {
             builder.create().show()
         } else {
             if (InternetConnectionUtils.isNetworkAvailable(context)) {
-                SnackbarManager.showSnackbar(context, context.getString(R.string.generic_network_error), null)
+                SnackbarManager.show(context, context.getString(R.string.generic_network_error), SnackbarManager.SnackbarStyle.ERROR)
             } else {
-                SnackbarManager.showSnackbar(context, SnackbarManager.PredefinedSnackbar.NO_INTERNET)
+                SnackbarManager.show(context, SnackbarManager.PredefinedSnackbar.NO_INTERNET)
             }
         }
     }
@@ -81,7 +81,7 @@ object ServerErrorHandler {
             }
             builder.create().show()
         } else {
-            SnackbarManager.showSnackbar(context, context.getString(R.string.generic_unknown_error), null)
+            SnackbarManager.show(context, context.getString(R.string.generic_unknown_error), SnackbarManager.SnackbarStyle.ERROR)
         }
     }
 

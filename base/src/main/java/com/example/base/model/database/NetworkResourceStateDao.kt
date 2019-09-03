@@ -6,7 +6,7 @@ import com.example.base.model.base.NetworkResource
 @Dao
 interface NetworkResourceStateDao {
 
-    @Query("SELECT * FROM NetworkResourceState WHERE NetworkResourceState.ownerClass = :ownerClassName AND NetworkResourceState.ownerId = :ownerId")
+    @Query("SELECT * FROM NetworkResourceState WHERE NetworkResourceState.ownerClassName = :ownerClassName AND NetworkResourceState.ownerId = :ownerId")
     fun getState(ownerClassName: String?, ownerId: String): NetworkResource.State
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

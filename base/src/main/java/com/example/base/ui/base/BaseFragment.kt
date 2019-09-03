@@ -7,20 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import com.example.base.R
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import timber.log.Timber
 
-abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
+abstract class BaseFragment : Fragment() {
 
-    private var _binding: T? = null
-    protected val binding: T
-        get() = _binding ?: throw Exception("View not created")
-
-    protected abstract val layoutId: Int
-
-    var isStarted: Boolean = false
-        private set
+    val routingActivity: RoutingActivity
+        get() = activity as RoutingActivity
 
     private var disposeOnStop = CompositeDisposable()
     private var disposeOnDestroyView = CompositeDisposable()
@@ -38,10 +35,27 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         disposeOnDestroy.add(disposable)
     }
 
-    final override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-        return binding.root
+    protected var toolbar: Toolbar? = null
+
+    fun setupToolbar(toolbar: Toolbar) {
+        this.toolbar = toolbar
+        toolbar.setNavigationIcon(R.drawable.ic_back)
+        toolbar.setNavigationOnClickListener { v ->
+            if (!onBackPressed()) {
+                routingActivity.popFragment()
+            }
+        }
+        refreshTitle()
     }
+
+    abstract val title: String?
+
+    protected fun refreshTitle() {
+        toolbar?.findViewById<TextView>(R.id.title_view)?.text = title
+    }
+
+    var isStarted: Boolean = false
+        private set
 
     override fun onStart() {
         super.onStart()
@@ -61,13 +75,16 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         super.onDestroyView()
         disposeOnDestroyView.dispose()
         disposeOnDestroyView = CompositeDisposable()
-        _binding = null
     }
 
     override fun onDestroy() {
         super.onDestroy()
         disposeOnDestroy.dispose()
         disposeOnDestroy = CompositeDisposable()
+    }
+
+    open fun onBackPressed(): Boolean {
+        return false
     }
 
 }

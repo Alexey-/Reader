@@ -6,12 +6,12 @@ import android.content.Intent
 import android.provider.Settings
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
-import com.google.android.material.snackbar.Snackbar
 import androidx.core.content.ContextCompat
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.base.R
+import com.google.android.material.snackbar.Snackbar
 
 object SnackbarManager {
 

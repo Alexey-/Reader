@@ -7,5 +7,5 @@ data class ArticleWithContent(
     @Embedded
     val article: Article,
     @Relation(parentColumn = "id", entityColumn = "articleId", entity = ArticleContent::class)
-    val content: ArticleContent
+    val content: List<ArticleContent>
 )

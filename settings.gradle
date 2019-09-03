@@ -1,5 +1,7 @@
 include ':reader'
+
 include ':base'
+include ':fake_server'
 
 include ':article_model'
 include ':user_model'

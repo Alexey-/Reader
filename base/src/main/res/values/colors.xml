@@ -10,9 +10,9 @@
     <color name="secondary_light">#ff6434</color>
     <color name="secondary_contrast">#ffffff</color>
 
-    <color name="text_primary">@color/primary_contrast</color>
-    <color name="text_secondary">@color/secondary_contrast</color>
-    <color name="text_inverse">#000000</color>
+    <color name="text_primary">#ff000000</color>
+    <color name="text_secondary">#ff444444</color>
+    <color name="text_inverse">#ffffffff</color>
     <color name="text_unimportant">#888888</color>
 
     <color name="error">@color/secondary_dark</color>

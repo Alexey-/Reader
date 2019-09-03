@@ -20,7 +20,7 @@ abstract class BaseApplication : Application(), Application.ActivityLifecycleCal
         registerActivityLifecycleCallbacks(this)
     }
 
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
 
     }
 
@@ -40,7 +40,7 @@ abstract class BaseApplication : Application(), Application.ActivityLifecycleCal
         Timber.d("Activity stopped: " + activity.javaClass.simpleName)
     }
 
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
 
     }
 

@@ -21,15 +21,21 @@ abstract class NetworkResource<ResponseType, DataType>(
 
     @Entity(
         tableName = "NetworkResourceState",
-        primaryKeys = ["ownerClass", "ownerId"]
+        primaryKeys = ["ownerClassName", "ownerId"]
     )
     data class State(
-        val ownerClass: Class<out NetworkResource<*, *>>,
+        val ownerClassName: String,
         val ownerId: String,
         val lastSuccessfulUpdate: LocalDateTime? = null,
         @Ignore val lastError: Throwable? = null,
         @Ignore val isUpdating: Boolean = false
-    )
+    ) {
+
+        constructor(ownerClassName: String, ownerId: String, lastSuccessfulUpdate: LocalDateTime?) : this(
+            ownerClassName, ownerId, lastSuccessfulUpdate, null, false
+        )
+
+    }
 
     data class Snapshot<DataType>(
         val state: State,
@@ -59,7 +65,7 @@ abstract class NetworkResource<ResponseType, DataType>(
             .fromCallable {
                 var state: State? = stateDao.getState(javaClass.canonicalName, resourceId)
                 if (state == null) {
-                    state = State(javaClass, resourceId)
+                    state = State(javaClass.simpleName, resourceId)
                 }
                 Snapshot(state, loadData())
             }

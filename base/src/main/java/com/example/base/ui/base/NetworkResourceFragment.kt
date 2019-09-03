@@ -16,7 +16,7 @@ import com.example.base.model.network.errors.ServerErrorException
 import com.example.base.ui.alerts.SnackbarManager
 import com.example.base.ui.view.ErrorView
 
-abstract class NetworkResourceFragment<DataType, T : ViewDataBinding> : BaseFragment<T>() {
+abstract class NetworkResourceFragment<DataType> : BaseFragment() {
 
     protected enum class ScreenState {
         NOT_LOADED,
